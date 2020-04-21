@@ -1,0 +1,18 @@
+name: upsetjs-jupyter-widget
+channels:
+  - conda-forge
+dependencies:
+  - r-base=3.6
+  - r-tidyverse
+  - r-shiny
+  - r-rmarkdown
+  - r-devtools
+  - python
+  - jupyterlab==2.1.0
+  - numpy
+  - pandas
+  - pip
+  - pip:
+      - ipywidgets==8.0.0a0
+      - upsetjs_jupyter_widget
+      - lineup_widget

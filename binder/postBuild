@@ -1,0 +1,9 @@
+#!/bin/bash
+set -ex
+
+Rscript -e "devtools::install_url(\"https://github.com/upsetjs/upsetjs_r/releases/latest/download/upsetjs.tar.gz\")"
+Rscript -e "devtools::install_github(\"https://github.com/lineups/lineupjs_htmlwidget\")"
+
+# Install JupyterLab extension
+jupyter nbextension enable --py widgetsnbextension
+jupyter labextension install @jupyter-widgets/jupyterlab-manager@3.0.0-alpha.0 @upsetjs/jupyter_widget
