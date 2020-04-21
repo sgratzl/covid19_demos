@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>LineUp Patient Data</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://unpkg.com/lineupjs@next/build/LineUpJS.css" rel="stylesheet">
+    <script src="https://unpkg.com/lineupjs@next"></script>
+    <script src="https://unpkg.com/papaparse"></script>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #app {
+            flex: 1 1 0;
+        }
+        header {
+            padding: 0 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h4>Covid 19 South Korea Patient Info</h4>
+    <p>Data from: <a href="https://www.kaggle.com/kimjihoo/coronavirusdataset#PatientInfo.csv">Kaggle</a></p>
+</header>
+<div id="app"></div>
+<script>
+async function main() {
+    const data = await new Promise((resolve) => Papa.parse('./data/PatientInfo.csv', {
+        download: true,
+        dynamicTyping: true,
+        header: true,
+        complete: resolve,
+    }));
+    const b = LineUpJS.builder(data.data);
+
+    b.deriveColumns(['state', 'sex', 'contact_number', 'infection_order', 'infection_case', 'city', 'province', 'country', 'age']);
+    b.column(LineUpJS.buildStringColumn('patient_id'));
+    b.column(LineUpJS.buildNumberColumn('birth_year', [1900, 2020]).numberFormat('d'));
+    // b.column(LineUpJS.buildCategoricalColumn('disease', ['true', 'false']));
+    
+    b.column(LineUpJS.buildStringColumn('infected_by'));
+    b.column(LineUpJS.buildDateColumn('symptoms_onset_date').format('%Y-%m-%d'));
+    b.column(LineUpJS.buildDateColumn('confirmed_date').format('%Y-%m-%d'));
+    b.column(LineUpJS.buildDateColumn('released_date').format('%Y-%m-%d'));
+    b.column(LineUpJS.buildDateColumn('deceased_date').format('%Y-%m-%d'));
+
+    b.aggregationStrategy('group+top+item');
+
+    const r = LineUpJS.buildRanking().column('_*');
+    ['patient_id', 'sex', 'age', 'birth_year', 'state', 'confirmed_date', 'released_date', 'deceased_date'].forEach((k) => r.column(k));
+    r.groupBy('sex')
+    r.sortBy('birth_year:desc')
+    b.ranking(r);
+    const taggle = b.buildTaggle(document.getElementById('app'));
+}
+main();
+</script>
+</body>
+</html>

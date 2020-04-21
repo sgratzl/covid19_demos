@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>UpSet Covid Symptoms</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://unpkg.com/@upsetjs/bundle"></script>
+    <script src="https://unpkg.com/papaparse"></script>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #app {
+            flex: 1 1 0;
+            overflow: hidden;
+        }
+        header {
+            padding: 0 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h4>Covid 19 Symptoms</h4>
+    <p>
+        Sort Order: <select id="sort" value="cardinality,degree,name">
+            <option value="cardinality,degree,name">1. Cardinality (desc), 2. Degree (asc), 3. Name</option>
+            <option value="cardinality,name">1. Cardinality (desc), 2. Name</option>
+            <option value="degree,cardinality,name">1. Degree (asc), 2. Cardinality (desc), 3. Name</option>
+            <option value="group,cardinality,name">1. Set, 2. Cardinality (desc), 3. Name</option>
+        </select>
+    </p>
+    <p>Data from: <a href="https://github.com/hms-dbmi/upset-altair-notebook<">Github</a></p>
+</header>
+<div id="app"></div>
+<script>
+async function main() {
+    const data = await new Promise((resolve) => Papa.parse('./data/covid_symptoms_table.csv', {
+        download: true,
+        dynamicTyping: true,
+        header: true,
+        complete: resolve,
+    }));
+    const setNames = data.meta.fields.slice(1);
+    const elems = data.data.map((row) => ({
+        name: row.id,
+        sets: setNames.filter((s) => row[s])
+    }));
+    const sets = UpSetJS.extractSets(elems);
+    sets.sort((a, b) => b.cardinality - a.cardinality);
+    const root = document.getElementById('app');
+
+    const props = {
+        sets,
+        combinations: {
+            min: 1,
+            order: ['cardinality', 'degree', 'name']
+        },
+        width: root.getBoundingClientRect().width,
+        height: root.getBoundingClientRect().height,
+        onHover: (s) => {
+            props.selection = s;
+            render();
+        },
+        widthRatios: [0.15, 0.1, 0.75],
+        heightRatios: [0.8, 0.2]
+    };
+    function render() {
+        UpSetJS.renderUpSet(root, props);
+    }
+    render();
+
+    document.getElementById('sort').addEventListener('change', (e) => {
+        props.combinations = {
+            ...props.combinations,
+            order: e.currentTarget.value.split(',')
+        };
+        render();
+    });
+}
+main();
+</script>
+</body>
+</html>
