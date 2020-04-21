@@ -32,7 +32,7 @@ the first variant is using [LineUp.js](https://lineup.js.org) and [UpSet.js](htt
 ### LineUp
 
 
-[![LineUp Notebook](https://user-images.githubusercontent.com/4129778/79870214-ebcab780-83e2-11ea-9d05-aa3226000617.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/lineup.ipynb)
+Not working ATM
 
 [![Open in Binder][binder]](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/lineup.ipynb)
 
