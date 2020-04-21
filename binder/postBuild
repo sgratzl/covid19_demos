@@ -6,4 +6,4 @@ Rscript -e "devtools::install_github(\"https://github.com/lineupjs/lineup_htmlwi
 
 # Install JupyterLab extension
 jupyter nbextension enable --py widgetsnbextension
-jupyter labextension install @jupyter-widgets/jupyterlab-manager@3.0.0-alpha.0 @upsetjs/jupyter_widget
+jupyter labextension install @jupyter-widgets/jupyterlab-manager@3.0.0-alpha.0 @upsetjs/jupyter_widget lineup_widget
