@@ -45,7 +45,7 @@ the first variant is using [LineUp.js](https://lineup.js.org) and [UpSet.js](htt
 
 ### LineUp
 
-[![LineUp Shiny App](https://user-images.githubusercontent.com/4129778/79872045-90e68f80-83e5-11ea-9786-fe97f99ccb30.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/))
+[![LineUp Shiny App](https://user-images.githubusercontent.com/4129778/79875187-91812500-83e9-11ea-9312-cb114af07450.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/))
 
 [Demo](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/)
 
