@@ -26,15 +26,35 @@ the first variant is using [LineUp.js](https://lineup.js.org) and [UpSet.js](htt
 
 ## Jupyter Notebooks
 
-https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/lineup.ipynb
+### LineUp
 
-https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/upset.ipynb
+
+[![LineUp Notebook](https://user-images.githubusercontent.com/4129778/79870214-ebcab780-83e2-11ea-9d05-aa3226000617.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/lineup.ipynb)
+
+[Demo](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/lineup.ipynb)
+
+
+### UpSet
+
+[![UpSet Notebook](https://user-images.githubusercontent.com/4129778/79870214-ebcab780-83e2-11ea-9d05-aa3226000617.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/upset.ipynb)
+
+[Demo](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=lab/upset.ipynb)
+
 
 ## R Studio
 
-https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/
+### LineUp
 
-https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/
+[![LineUp Shiny App](https://user-images.githubusercontent.com/4129778/79872045-90e68f80-83e5-11ea-9786-fe97f99ccb30.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/))
+
+[Demo](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/)
+
+
+### UpSet
+
+[![UpSet Shiny App](https://user-images.githubusercontent.com/4129778/79872045-90e68f80-83e5-11ea-9786-fe97f99ccb30.png)](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/))
+
+[Demo](https://mybinder.org/v2/gh/sgratzl/covid19_demos/master?urlpath=rstudio/)
 
 
 ## Data
