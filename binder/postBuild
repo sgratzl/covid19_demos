@@ -2,7 +2,7 @@
 set -ex
 
 Rscript -e "devtools::install_url(\"https://github.com/upsetjs/upsetjs_r/releases/latest/download/upsetjs.tar.gz\")"
-Rscript -e "devtools::install_github(\"https://github.com/lineups/lineupjs_htmlwidget\")"
+Rscript -e "devtools::install_github(\"https://github.com/lineups/lineup_htmlwidget\")"
 
 # Install JupyterLab extension
 jupyter nbextension enable --py widgetsnbextension
