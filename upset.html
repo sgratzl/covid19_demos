@@ -64,8 +64,6 @@ async function main() {
             min: 1,
             order: ['cardinality', 'degree', 'name']
         },
-        width: root.getBoundingClientRect().width,
-        height: root.getBoundingClientRect().height,
         onHover: (s) => {
             props.selection = s;
             render();
@@ -74,7 +72,11 @@ async function main() {
         heightRatios: [0.8, 0.2]
     };
     function render() {
-        UpSetJS.renderUpSet(root, props);
+        UpSetJS.renderUpSet(root, {
+            ...props,       
+            width: root.getBoundingClientRect().width,
+            height: root.getBoundingClientRect().height,
+        });
     }
     render();
 
@@ -85,6 +87,8 @@ async function main() {
         };
         render();
     });
+
+    window.addEventListener('resize', render);
 }
 main();
 </script>
